@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kolay_wms_mobile">
    <application
-        android:label="kolay_wms_mobile"
+        android:label="KolayWMS"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
