@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kolay_wms_mobile/constants.dart';
+import 'package:kolay_wms_mobile/pages/login.dart';
 
 class IntroductionPage extends StatelessWidget {
   IntroductionPage({Key? key}) : super(key: key);
@@ -54,7 +56,7 @@ class IntroductionPage extends StatelessWidget {
       body: IntroductionScreen(
         pages: listPagesViewModel,
         onDone: () {
-          print("Başlayalım");
+          Get.off(LoginPage());
         },
         showSkipButton: true,
         skip: Text("Atla",

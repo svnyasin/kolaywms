@@ -1,29 +1,36 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  Rxn<User> _firebaseUser = Rxn<User>();
+  var _firebaseUser = FirebaseAuth.instance.currentUser.obs;
+  var launch = true.obs;
 
   User? get user => _firebaseUser.value;
 
   @override
-  onInit() {
+  onInit() async {
     _firebaseUser.bindStream(_auth.authStateChanges());
+    launch.value = await checkFirstSeen();
+  }
+
+  Future<bool> checkFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    launch.value = prefs.getBool("launch") ?? true;
+    if (launch.value == true) {
+      await prefs.setBool('launch', false);
+    }
+    print(launch.value);
+    return launch.value;
   }
 
   void createUser(String email, String password) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
+      UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
 
       Get.back();
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
     } catch (e) {
       Get.snackbar(
         "Error",
@@ -35,8 +42,8 @@ class AuthController extends GetxController {
 
   void login(String email, String password) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
     } catch (e) {
       Get.snackbar(
         "Error",
