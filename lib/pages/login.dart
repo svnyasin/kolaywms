@@ -82,7 +82,7 @@ class LoginPage extends GetWidget<AuthController> {
               children: <Widget>[
                 SocialIcon(
                   iconSrc: "assets/icons/google-plus.svg",
-                  press: () => print("google tıklandı"),
+                  press: () => controller.signInWithGoogle(),
                 ),
               ],
             ),

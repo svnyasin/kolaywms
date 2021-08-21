@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
+import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
+import 'package:kolay_wms_mobile/pages/login.dart';
+import 'package:kolay_wms_mobile/widgets/already_have_an_account.dart';
+import 'package:kolay_wms_mobile/widgets/text_field_container.dart';
 
 class SignUpPage extends GetWidget<AuthController> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -13,34 +19,91 @@ class SignUpPage extends GetWidget<AuthController> {
         title: Text("Sign Up"),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(hintText: "Email"),
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              "assets/images/maintenance.png",
+              height: Get.size.height * 0.25,
+            ),
+            SizedBox(height: Get.size.height * 0.01),
+            TextFieldContainer(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.person,
+                    color: kPrimaryColor,
+                  ),
+                  hintText: "Email",
+                  border: InputBorder.none,
+                ),
                 controller: emailController,
               ),
-              SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Password"),
-                obscureText: true,
+            ),
+            TextFieldContainer(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.lock,
+                    color: kPrimaryColor,
+                  ),
+                  hintText: "Password",
+                  border: InputBorder.none,
+                ),
                 controller: passwordController,
+                obscureText: true,
               ),
-              TextButton(
-                child: Text("Sign Up"),
+            ),
+            TextFieldContainer(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.lock,
+                    color: kPrimaryColor,
+                  ),
+                  hintText: "Confirm Password",
+                  border: InputBorder.none,
+                ),
+                controller: confirmPasswordController,
+                obscureText: true,
+              ),
+            ),
+            Container(
+              height: 60,
+              width: 310,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ))),
                 onPressed: () {
-                  controller.createUser(
-                      emailController.text, passwordController.text);
+                  passwordController.text == confirmPasswordController.text
+                      ? controller.createUser(
+                          emailController.text, passwordController.text)
+                      : Get.snackbar(
+                          "Error",
+                          "Passwords dont match",
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
                 },
-              )
-            ],
-          ),
+                child: Text(
+                  "SIGNUP",
+                  style: TextStyle(fontSize: 15),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AlreadyHaveAnAccount(
+                login: false, press: () => Get.to(LoginPage())),
+          ],
         ),
-      ),
+      )),
     );
   }
 }
