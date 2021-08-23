@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
+import 'package:kolay_wms_mobile/pages/forgot_password.dart';
 import 'package:kolay_wms_mobile/pages/sign_up.dart';
 import 'package:kolay_wms_mobile/widgets/already_have_an_account.dart';
-import 'package:kolay_wms_mobile/widgets/rounded_button.dart';
 import 'package:kolay_wms_mobile/widgets/text_field_container.dart';
 
 class LoginPage extends GetWidget<AuthController> {
@@ -27,7 +27,7 @@ class LoginPage extends GetWidget<AuthController> {
               "assets/images/welcome.png",
               height: Get.size.height * 0.25,
             ),
-            SizedBox(height: Get.size.height * 0.01),
+            SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 decoration: InputDecoration(
@@ -35,30 +35,40 @@ class LoginPage extends GetWidget<AuthController> {
                     Icons.person,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Email",
+                  hintText: "Email.tr",
                   border: InputBorder.none,
                 ),
                 controller: emailController,
               ),
             ),
-            TextFieldContainer(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.lock,
-                    color: kPrimaryColor,
+            SizedBox(height: Get.size.height * 0.02),
+            Column(
+              children: [
+                TextFieldContainer(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.lock,
+                        color: kPrimaryColor,
+                      ),
+                      hintText: "Password",
+                      border: InputBorder.none,
+                    ),
+                    controller: passwordController,
+                    obscureText: true,
                   ),
-                  hintText: "Password",
-                  border: InputBorder.none,
                 ),
-                controller: passwordController,
-                obscureText: true,
-              ),
+              ],
             ),
+            TextButton(
+                onPressed: () => Get.to(ForgotPasswordPage()),
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(color: kPrimaryColor),
+                )),
             Container(
               height: 60,
               width: 310,
-              margin: EdgeInsets.symmetric(vertical: 10),
               child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(kPrimaryColor),

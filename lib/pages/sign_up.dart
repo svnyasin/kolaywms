@@ -27,7 +27,7 @@ class SignUpPage extends GetWidget<AuthController> {
               "assets/images/maintenance.png",
               height: Get.size.height * 0.25,
             ),
-            SizedBox(height: Get.size.height * 0.01),
+            SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 decoration: InputDecoration(
@@ -41,6 +41,7 @@ class SignUpPage extends GetWidget<AuthController> {
                 controller: emailController,
               ),
             ),
+            SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 decoration: InputDecoration(
@@ -55,6 +56,7 @@ class SignUpPage extends GetWidget<AuthController> {
                 obscureText: true,
               ),
             ),
+            SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 decoration: InputDecoration(
@@ -69,10 +71,10 @@ class SignUpPage extends GetWidget<AuthController> {
                 obscureText: true,
               ),
             ),
+            SizedBox(height: Get.size.height * 0.02),
             Container(
               height: 60,
               width: 310,
-              margin: EdgeInsets.symmetric(vertical: 10),
               child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(kPrimaryColor),
@@ -96,9 +98,7 @@ class SignUpPage extends GetWidget<AuthController> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: Get.size.height * 0.02),
             AlreadyHaveAnAccount(
                 login: false, press: () => Get.to(LoginPage())),
           ],

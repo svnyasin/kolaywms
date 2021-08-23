@@ -72,6 +72,11 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> resetPassword(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
+    Get.offAll(Root());
+  }
+
   void login(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
