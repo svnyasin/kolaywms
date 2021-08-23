@@ -11,15 +11,73 @@ class HomePage extends GetWidget<NavBarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+              ),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    child: authController.user!.photoURL != null
+                        ? ClipOval(
+                            child: Image.network(
+                              authController.user!.photoURL!,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : Icon(
+                            Icons.person,
+                            size: 40,
+                          ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    authController.user!.email!,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              trailing: Icon(Icons.arrow_right),
+              title: Text("Profile"),
+              onTap: () {
+                print("Profil tıklandı");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              trailing: Icon(Icons.arrow_right),
+              title: Text("Settings"),
+              onTap: () {
+                print("Profil tıklandı");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              trailing: Icon(Icons.arrow_right),
+              title: Text("Sign Out"),
+              onTap: () {
+                authController.signOut();
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Text('Kolay WBS'),
-        actions: <Widget>[
-          IconButton(
-            key: const Key('homePage_logout_iconButton'),
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () => authController.signOut(),
-          )
-        ],
       ),
       body: SafeArea(
         child: Obx(
