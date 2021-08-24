@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kolay_wms_mobile/constants.dart';
+import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
 import 'package:kolay_wms_mobile/pages/login.dart';
+import 'package:kolay_wms_mobile/utils/root.dart';
 
-class IntroductionPage extends StatelessWidget {
+class IntroductionPage extends GetWidget<AuthController> {
   IntroductionPage({Key? key}) : super(key: key);
 
   final List<PageViewModel> listPagesViewModel = [
@@ -56,7 +58,8 @@ class IntroductionPage extends StatelessWidget {
       body: IntroductionScreen(
         pages: listPagesViewModel,
         onDone: () {
-          Get.off(LoginPage());
+          controller.launch.value = false;
+          Get.to(Root());
         },
         showSkipButton: true,
         skip: Text("Atla",

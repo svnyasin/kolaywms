@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
 import 'package:kolay_wms_mobile/controllers/navbar_controller.dart';
+import 'package:kolay_wms_mobile/pages/add_items.dart';
+import 'package:kolay_wms_mobile/pages/cart.dart';
+import 'package:kolay_wms_mobile/pages/stock_info.dart';
 
 class HomePage extends GetWidget<NavBarController> {
   AuthController authController = AuthController();
@@ -84,21 +87,9 @@ class HomePage extends GetWidget<NavBarController> {
           () => IndexedStack(
             index: controller.tabIndex.value,
             children: [
-              Center(
-                child: Text(
-                  'Index 0: Home',
-                ),
-              ),
-              Center(
-                child: Text(
-                  'Index 1: Sale',
-                ),
-              ),
-              Center(
-                child: Text(
-                  'Index 2: Add',
-                ),
-              ),
+              StockInfo(),
+              Cart(),
+              AddItems(),
             ],
           ),
         ),

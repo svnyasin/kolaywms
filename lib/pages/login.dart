@@ -35,7 +35,7 @@ class LoginPage extends GetWidget<AuthController> {
                     Icons.person,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Email.tr",
+                  hintText: "Email",
                   border: InputBorder.none,
                 ),
                 controller: emailController,
