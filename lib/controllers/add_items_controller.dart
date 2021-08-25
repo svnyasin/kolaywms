@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
 class AddItemsController extends GetxController {
-  CollectionReference items = FirebaseFirestore.instance.collection('items');
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   var scannedBarcode = "";
 
@@ -20,7 +22,8 @@ class AddItemsController extends GetxController {
   Future<void> addItem(
       String id, String brand, String name, double price, int quentity) {
     // Call the user's CollectionReference to add a new user
-    return items
+    return _firestore
+        .collection(_auth.currentUser!.uid)
         .doc(id)
         .set({
           'brand': brand,
@@ -36,7 +39,8 @@ class AddItemsController extends GetxController {
 
   Future<void> updateItem(
       String id, String brand, String name, double price, int quentity) {
-    return items
+    return _firestore
+        .collection(_auth.currentUser!.uid)
         .doc(id)
         .update({
           'brand': brand,
@@ -51,7 +55,11 @@ class AddItemsController extends GetxController {
   }
 
   Future<bool> checkDocument(String id) async {
-    return items.doc(id).get().then((DocumentSnapshot documentSnapshot) {
+    return _firestore
+        .collection(_auth.currentUser!.uid)
+        .doc(id)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         print(true);
         return true;

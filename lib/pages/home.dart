@@ -81,6 +81,7 @@ class HomePage extends GetWidget<NavBarController> {
       ),
       appBar: AppBar(
         title: const Text('Kolay WBS'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Obx(
