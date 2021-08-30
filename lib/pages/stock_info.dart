@@ -15,10 +15,11 @@ class _StockInfoState extends State<StockInfo> {
 
   var controller = Get.find<StockInfoController>();
 
-  List _resultsList = [].obs;
+  List resultsList = [];
 
   @override
   void initState() {
+    controller.itemsList.bindStream(controller.getItems());
     super.initState();
     _searchController.addListener(_onSearchChanged);
     searchResultsList();
@@ -40,7 +41,9 @@ class _StockInfoState extends State<StockInfo> {
     if (_searchController.text != "") {
       for (var i = 0; i < controller.itemsList.length; i++) {
         var brand = controller.itemsList[i].brand.toLowerCase();
-        if (brand.contains(_searchController.text.toLowerCase())) {
+        var id = controller.itemsList[i].id.toLowerCase();
+        if (brand.contains(_searchController.text.toLowerCase()) ||
+            id.contains(_searchController.text.toLowerCase())) {
           showResults.add(controller.itemsList[i]);
         }
       }
@@ -48,7 +51,7 @@ class _StockInfoState extends State<StockInfo> {
       showResults = controller.itemsList;
     }
     setState(() {
-      _resultsList = showResults;
+      resultsList = showResults;
     });
   }
 
@@ -73,37 +76,38 @@ class _StockInfoState extends State<StockInfo> {
             decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
                 labelText: "Search",
-                hintText: "Ürün markası giriniz"),
+                hintText: "Marka veya ID giriniz"),
             controller: _searchController,
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 15,
         ),
         Expanded(
-            child: Obx(
-          () => Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12, width: 1)),
-            child: ListView.builder(
-              itemCount: _resultsList.length,
-              itemBuilder: (context, index) => Card(
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Text(_resultsList[index].quentity!.toString()),
+          child: Obx(
+            () => Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12, width: 1)),
+              child: ListView.builder(
+                itemCount: resultsList.length,
+                itemBuilder: (context, index) => Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Text(resultsList[index].quentity!.toString()),
+                    ),
+                    title: Text(resultsList[index].brand! +
+                        " (" +
+                        resultsList[index].id! +
+                        ")"),
+                    subtitle: Text(resultsList[index].name!),
+                    trailing: Text(resultsList[index].price!.toString() + "₺"),
                   ),
-                  title: Text(_resultsList[index].brand! +
-                      " (" +
-                      _resultsList[index].id! +
-                      ")"),
-                  subtitle: Text(_resultsList[index].name!),
-                  trailing: Text(_resultsList[index].price!.toString() + "₺"),
                 ),
               ),
             ),
           ),
-        )),
+        ),
       ],
     );
   }

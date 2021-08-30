@@ -12,7 +12,6 @@ class StockInfoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    itemsList.bindStream(getItems());
   }
 
   Stream<List<Item>> getItems() => _firestore

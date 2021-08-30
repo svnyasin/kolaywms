@@ -96,7 +96,8 @@ class AddItems extends GetWidget<AddItemsController> {
                             borderRadius: BorderRadius.circular(30.0),
                           ))),
                       onPressed: () async {
-                        bool isDocExist =
+                        try {
+                          bool isDocExist =
                             await controller.checkDocument(idController.text);
                         if (isDocExist) {
                           controller.updateItem(
@@ -112,6 +113,14 @@ class AddItems extends GetWidget<AddItemsController> {
                               nameController.text,
                               double.parse(priceController.text),
                               int.parse(quentityController.text));
+                        }
+                        } catch (e) {
+                          Get.showSnackbar(GetBar(
+                            
+                            icon: Icon(Icons.error, color: Colors.white,),
+        title: "Hata",
+        message: "Alanlar boş bırakılamaz", duration: Duration(seconds: 2),
+    ),);
                         }
                       },
                       child: Text(
