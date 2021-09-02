@@ -16,7 +16,7 @@ class SignUpPage extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        title: Text("sign_up".tr),
       ),
       body: Center(
           child: SingleChildScrollView(
@@ -35,7 +35,7 @@ class SignUpPage extends GetWidget<AuthController> {
                     Icons.person,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Email",
+                  hintText: "email".tr,
                   border: InputBorder.none,
                 ),
                 controller: emailController,
@@ -49,7 +49,7 @@ class SignUpPage extends GetWidget<AuthController> {
                     Icons.lock,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Password",
+                  hintText: "password".tr,
                   border: InputBorder.none,
                 ),
                 controller: passwordController,
@@ -64,7 +64,7 @@ class SignUpPage extends GetWidget<AuthController> {
                     Icons.lock,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Confirm Password",
+                  hintText: "confirm_password".tr,
                   border: InputBorder.none,
                 ),
                 controller: confirmPasswordController,
@@ -87,13 +87,13 @@ class SignUpPage extends GetWidget<AuthController> {
                       ? controller.createUser(
                           emailController.text, passwordController.text)
                       : Get.snackbar(
-                          "Error",
-                          "Passwords dont match",
+                          "error".tr,
+                          "passwords_dont_match".tr,
                           snackPosition: SnackPosition.BOTTOM,
                         );
                 },
                 child: Text(
-                  "SIGNUP",
+                  "sign_up".tr,
                   style: TextStyle(fontSize: 15),
                 ),
               ),

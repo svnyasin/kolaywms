@@ -63,7 +63,7 @@ class _StockInfoState extends State<StockInfo> {
           height: 10,
         ),
         Text(
-          "Stock",
+          "stock".tr,
           style: TextStyle(
               fontSize: 22, fontWeight: FontWeight.bold, color: kPrimaryColor),
         ),
@@ -75,8 +75,8 @@ class _StockInfoState extends State<StockInfo> {
           child: TextFormField(
             decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
-                labelText: "Search",
-                hintText: "Marka veya ID giriniz"),
+                labelText: "search".tr,
+                hintText: "search_hint".tr),
             controller: _searchController,
           ),
         ),

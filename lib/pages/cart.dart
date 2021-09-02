@@ -46,7 +46,7 @@ class _CartState extends State<Cart> {
               height: 10,
             ),
             Text(
-              "Satış",
+              "sale".tr,
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -89,7 +89,7 @@ class _CartState extends State<Cart> {
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
-                    height: 400,
+                    height: Get.size.height - 400,
                     child: Obx(
                       () => Container(
                         decoration: BoxDecoration(
@@ -153,7 +153,7 @@ class _CartState extends State<Cart> {
               height: 60,
               width: 310,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -174,32 +174,12 @@ class _CartState extends State<Cart> {
                         });
                       },
                       child: Text(
-                        "CLEAR",
+                        "clear".tr,
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 40,
-                    width: 150,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(kPrimaryColor),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ))),
-                      onPressed: () async {
-                        
-                      },
-                      child: Text(
-                        "DONE",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                  ),
+                  
                 ],
               ),
             ),
@@ -218,7 +198,7 @@ class _CartState extends State<Cart> {
                   controller.cartList.clear();
                 },
                 child: Text(
-                  "DONE",
+                  "done".tr,
                   style: TextStyle(fontSize: 15),
                 ),
               ),

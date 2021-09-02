@@ -16,7 +16,7 @@ class LoginPage extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: Text("log_in".tr),
       ),
       body: Center(
           child: SingleChildScrollView(
@@ -35,7 +35,7 @@ class LoginPage extends GetWidget<AuthController> {
                     Icons.person,
                     color: kPrimaryColor,
                   ),
-                  hintText: "Email",
+                  hintText: "email".tr,
                   border: InputBorder.none,
                 ),
                 controller: emailController,
@@ -51,7 +51,7 @@ class LoginPage extends GetWidget<AuthController> {
                         Icons.lock,
                         color: kPrimaryColor,
                       ),
-                      hintText: "Password",
+                      hintText: "password".tr,
                       border: InputBorder.none,
                     ),
                     controller: passwordController,
@@ -63,7 +63,7 @@ class LoginPage extends GetWidget<AuthController> {
             TextButton(
                 onPressed: () => Get.to(ForgotPasswordPage()),
                 child: Text(
-                  "Forgot Password?",
+                  "forgot_password".tr,
                   style: TextStyle(color: kPrimaryColor),
                 )),
             Container(
@@ -81,7 +81,7 @@ class LoginPage extends GetWidget<AuthController> {
                       emailController.text, passwordController.text);
                 },
                 child: Text(
-                  "LOGIN",
+                  "log_in".tr,
                   style: TextStyle(fontSize: 15),
                 ),
               ),
@@ -121,7 +121,7 @@ class OrDivider extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "OR",
+              "or".tr,
               style: TextStyle(
                 color: kPrimaryColor,
                 fontWeight: FontWeight.w600,
@@ -178,7 +178,7 @@ class SocialIcon extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Text("Login with Google"),
+            Text("login_with_google".tr),
           ],
         ),
       ),

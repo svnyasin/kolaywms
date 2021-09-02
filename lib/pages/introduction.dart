@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
-import 'package:kolay_wms_mobile/pages/login.dart';
 import 'package:kolay_wms_mobile/utils/root.dart';
 
 class IntroductionPage extends GetWidget<AuthController> {
@@ -11,9 +10,9 @@ class IntroductionPage extends GetWidget<AuthController> {
 
   final List<PageViewModel> listPagesViewModel = [
     PageViewModel(
-      title: "KolayWMS'e hoşgeldin!",
+      title: "intro1_title".tr,
       body:
-          "KolayWMS stoğunuzu, deponuzu yada envanterınızı kolayca yönetebilmeniz için özenle geliştirilmiş bir yönetim sistemidir.",
+          "intro1_body".tr,
       image: Image.asset("assets/images/welcome.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
@@ -21,9 +20,9 @@ class IntroductionPage extends GetWidget<AuthController> {
       ),
     ),
     PageViewModel(
-      title: "Sizi yönetim kaynaklı kayıplardan korur.",
+      title: "intro2_title".tr,
       body:
-          "Stok veya depo yönetimi doğru bir şekilde yapılmadığında ciddi kayıplar meydana gelebilir. KolayWMS sizi tüm bu dertlerden kurtarır.",
+          "intro2_body".tr,
       image: Image.asset("assets/images/business_failure.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
@@ -31,9 +30,10 @@ class IntroductionPage extends GetWidget<AuthController> {
       ),
     ),
     PageViewModel(
-      title: "Her senaryoda kullanılabilir.",
+      title: "intro3_title".tr,
       body:
-          "KolayWMS her türlü stok ve depolama senaryosunda kullanılabilecek şekilde geliştirilmiştir.",
+                    "intro3_body".tr,
+
       image: Image.asset("assets/images/maintenance.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
@@ -41,9 +41,10 @@ class IntroductionPage extends GetWidget<AuthController> {
       ),
     ),
     PageViewModel(
-      title: "Yönetimin en kolay yolu.",
+            title: "intro4_title".tr,
+
       body:
-          "KolayWMS ürünleriniz hakkında her türlü bilgiye anında ulaşabilmenizi, deponuzun durumunu hem web hem mobil platformlardan anlık olarak takip etmenizi sağlar ve sizi etkinliğe ve verimliliğe ulaştırır.",
+          "intro4_body".tr,
       image: Image.asset("assets/images/business_plan.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
@@ -59,20 +60,20 @@ class IntroductionPage extends GetWidget<AuthController> {
         pages: listPagesViewModel,
         onDone: () {
           controller.launch.value = false;
-          Get.to(Root());
+          Get.offAll(Root());
         },
         showSkipButton: true,
-        skip: Text("Atla",
+        skip: Text("skip".tr,
             style: TextStyle(
                 fontSize: 18,
                 color: kPrimaryColor,
                 fontWeight: FontWeight.w600)),
-        next: Text("Sonraki",
+        next: Text("next".tr,
             style: TextStyle(
                 fontSize: 18,
                 color: kPrimaryColor,
                 fontWeight: FontWeight.w600)),
-        done: Text("Başlayalım",
+        done: Text("get_started".tr,
             style: TextStyle(
                 fontSize: 18,
                 color: kPrimaryColor,

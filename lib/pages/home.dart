@@ -52,26 +52,18 @@ class HomePage extends GetWidget<NavBarController> {
                 ],
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              trailing: Icon(Icons.arrow_right),
-              title: Text("Profile"),
-              onTap: () {
-                print("Profil tıklandı");
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.arrow_right),
-              title: Text("Settings"),
-              onTap: () {
-                print("Profil tıklandı");
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.settings),
+            //   trailing: Icon(Icons.arrow_right),
+            //   title: Text("settings".tr),
+            //   onTap: () {
+            //     Get.to(Settings());
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               trailing: Icon(Icons.arrow_right),
-              title: Text("Sign Out"),
+              title: Text("sign_out".tr),
               onTap: () {
                 authController.signOut();
               },
@@ -80,7 +72,7 @@ class HomePage extends GetWidget<NavBarController> {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Kolay WBS'),
+        title: const Text('KolayWMS'),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -111,15 +103,15 @@ class HomePage extends GetWidget<NavBarController> {
               icon: Icon(
                 Icons.home,
               ),
-              label: 'Home',
+              label: 'stock'.tr,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart),
-              label: 'Sale',
+              label: 'sale'.tr,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add_circle),
-              label: 'Add',
+              label: 'ekle'.tr,
             ),
           ],
         ),

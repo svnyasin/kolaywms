@@ -14,12 +14,12 @@ class AddItems extends GetWidget<AddItemsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 10,),
             Text(
-              "Add Items",
+              "add_items".tr,
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class AddItems extends GetWidget<AddItemsController> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Brand",
+                      labelText: "brand".tr,
                     ),
                     controller: brandController,
                   ),
@@ -58,7 +58,7 @@ class AddItems extends GetWidget<AddItemsController> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Name",
+                      labelText: "name".tr,
                     ),
                     controller: nameController,
                   ),
@@ -67,7 +67,7 @@ class AddItems extends GetWidget<AddItemsController> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Price",
+                      labelText: "price".tr,
                     ),
                     controller: priceController,
                   ),
@@ -76,7 +76,7 @@ class AddItems extends GetWidget<AddItemsController> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Quentity",
+                      labelText: "quentity".tr,
                     ),
                     controller: quentityController,
                   ),
@@ -98,33 +98,38 @@ class AddItems extends GetWidget<AddItemsController> {
                       onPressed: () async {
                         try {
                           bool isDocExist =
-                            await controller.checkDocument(idController.text);
-                        if (isDocExist) {
-                          controller.updateItem(
-                              idController.text,
-                              brandController.text,
-                              nameController.text,
-                              double.parse(priceController.text),
-                              int.parse(quentityController.text));
-                        } else {
-                          controller.addItem(
-                              idController.text,
-                              brandController.text,
-                              nameController.text,
-                              double.parse(priceController.text),
-                              int.parse(quentityController.text));
-                        }
+                              await controller.checkDocument(idController.text);
+                          if (isDocExist) {
+                            controller.updateItem(
+                                idController.text,
+                                brandController.text,
+                                nameController.text,
+                                double.parse(priceController.text),
+                                int.parse(quentityController.text));
+                          } else {
+                            controller.addItem(
+                                idController.text,
+                                brandController.text,
+                                nameController.text,
+                                double.parse(priceController.text),
+                                int.parse(quentityController.text));
+                          }
                         } catch (e) {
-                          Get.showSnackbar(GetBar(
-                            
-                            icon: Icon(Icons.error, color: Colors.white,),
-        title: "Hata",
-        message: "Alanlar boş bırakılamaz", duration: Duration(seconds: 2),
-    ),);
+                          Get.showSnackbar(
+                            GetBar(
+                              icon: Icon(
+                                Icons.error,
+                                color: Colors.white,
+                              ),
+                              title: "error".tr,
+                              message: "add_null_error".tr,
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
                         }
                       },
                       child: Text(
-                        "ADD",
+                        "add".tr,
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -134,7 +139,6 @@ class AddItems extends GetWidget<AddItemsController> {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

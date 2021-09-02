@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:kolay_wms_mobile/pages/login.dart';
 import 'package:kolay_wms_mobile/utils/root.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

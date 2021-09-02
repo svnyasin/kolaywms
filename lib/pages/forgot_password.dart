@@ -13,7 +13,7 @@ class ForgotPasswordPage extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Forgot Password"),
+        title: Text("forgot_password".tr),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -31,7 +31,7 @@ class ForgotPasswordPage extends GetWidget<AuthController> {
                       Icons.person,
                       color: kPrimaryColor,
                     ),
-                    hintText: "Email",
+                    hintText: "email".tr,
                     border: InputBorder.none,
                   ),
                   controller: emailController,
@@ -54,7 +54,7 @@ class ForgotPasswordPage extends GetWidget<AuthController> {
                     controller.resetPassword(emailController.text);
                   },
                   child: Text(
-                    "SEND",
+                    "send".tr,
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
