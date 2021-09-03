@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
 import 'package:kolay_wms_mobile/pages/login.dart';
+import 'package:kolay_wms_mobile/utils/root.dart';
 import 'package:kolay_wms_mobile/widgets/already_have_an_account.dart';
 import 'package:kolay_wms_mobile/widgets/text_field_container.dart';
 
@@ -30,7 +31,11 @@ class SignUpPage extends GetWidget<AuthController> {
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
                 decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
+
                   icon: Icon(
                     Icons.person,
                     color: kPrimaryColor,
@@ -44,7 +49,11 @@ class SignUpPage extends GetWidget<AuthController> {
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
                 decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
+
                   icon: Icon(
                     Icons.lock,
                     color: kPrimaryColor,
@@ -59,7 +68,12 @@ class SignUpPage extends GetWidget<AuthController> {
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
                 decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
+
+                  
                   icon: Icon(
                     Icons.lock,
                     color: kPrimaryColor,
@@ -100,7 +114,7 @@ class SignUpPage extends GetWidget<AuthController> {
             ),
             SizedBox(height: Get.size.height * 0.02),
             AlreadyHaveAnAccount(
-                login: false, press: () => Get.to(LoginPage())),
+                login: false, press: () => Get.offAll(Root())),
           ],
         ),
       )),

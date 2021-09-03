@@ -47,7 +47,12 @@ class Messages extends Translations {
           "name":"Name",
           "price":"Price",
           "quentity":"Quentity",
-          "add_null_error":"Fields cannot be left blank."
+          "add_null_error":"Fields cannot be left blank.",
+          "change_language":"Change language",
+          "dark_mode":"Dark Mode",
+          "success":"Success",
+          "forgot_password_success":"Forgot password link successfully sent to your mail.",
+
           
 
         },
@@ -81,7 +86,7 @@ class Messages extends Translations {
           "passwords_dont_match": "Şifreler eşleşmiyor",
           "send": "Gönder",
           "settings": "Ayarlar",
-          "sign_out": "Çıkış Yap",
+          "sign_out": "Çıkış yap",
           "stock": "Stok",
           "sale": "Satış",
           "add": "Ekle",
@@ -94,7 +99,14 @@ class Messages extends Translations {
           "name":"İsim",
           "price":"Fiyat",
           "quentity":"Adet",
-          "add_null_error":"Alanlar boş bırakılamaz."
+          "add_null_error":"Alanlar boş bırakılamaz.",
+          "change_language":"Dili değiştir",
+          "dark_mode":"Koyu Tema",
+          "success":"Başarılı",
+          "forgot_password_success":"Parola sıfırlama linki başarıyla gönderildi.",
+
+
+
         }
       };
 }

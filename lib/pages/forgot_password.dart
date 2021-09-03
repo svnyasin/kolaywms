@@ -26,7 +26,11 @@ class ForgotPasswordPage extends GetWidget<AuthController> {
               SizedBox(height: Get.size.height * 0.03),
               TextFieldContainer(
                 child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
                   decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
+
                     icon: Icon(
                       Icons.person,
                       color: kPrimaryColor,

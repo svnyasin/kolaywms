@@ -8,6 +8,7 @@ class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
   var _firebaseUser = FirebaseAuth.instance.currentUser.obs;
   var launch = true.obs;
+  var checkDone = false.obs;
 
   User? get user => _firebaseUser.value;
 
@@ -24,6 +25,7 @@ class AuthController extends GetxController {
       await prefs.setBool('launch', false);
     }
     print(launch.value);
+    checkDone.value = true;
     return launch.value;
   }
 
@@ -72,8 +74,21 @@ class AuthController extends GetxController {
   }
 
   Future<void> resetPassword(String email) async {
-    await _auth.sendPasswordResetEmail(email: email);
-    Get.offAll(Root());
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      Get.snackbar(
+        "success".tr,
+        "forgot_password_success".tr,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+    
   }
 
   void login(String email, String password) async {

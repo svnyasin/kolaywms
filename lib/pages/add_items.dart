@@ -14,10 +14,19 @@ class AddItems extends GetWidget<AddItemsController> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode currentScope = FocusScope.of(context);
+        if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        }
+      },
+      child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Text(
               "add_items".tr,
               style: TextStyle(
@@ -84,6 +93,34 @@ class AddItems extends GetWidget<AddItemsController> {
                     height: 14,
                   ),
                   Container(
+                    height: 40,
+                    width: 150,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(kPrimaryColor),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ))),
+                      onPressed: () async {
+                        idController.text = "";
+                        brandController.text = "";
+                        nameController.text = "";
+                        priceController.text = "";
+                        quentityController.text = "";
+                      },
+                      child: Text(
+                        "clear".tr,
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
                     height: 60,
                     width: 310,
                     child: ElevatedButton(
@@ -139,6 +176,7 @@ class AddItems extends GetWidget<AddItemsController> {
             ),
           ],
         ),
-      );
+      ),
+    );
   }
 }

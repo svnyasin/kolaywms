@@ -57,58 +57,70 @@ class _StockInfoState extends State<StockInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "stock".tr,
-          style: TextStyle(
-              fontSize: 22, fontWeight: FontWeight.bold, color: kPrimaryColor),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: TextFormField(
-            decoration: InputDecoration(
-                suffixIcon: Icon(Icons.search),
-                labelText: "search".tr,
-                hintText: "search_hint".tr),
-            controller: _searchController,
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode currentScope = FocusScope.of(context);
+        if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        }
+      },
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
           ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Expanded(
-          child: Obx(
-            () => Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12, width: 1)),
-              child: ListView.builder(
-                itemCount: resultsList.length,
-                itemBuilder: (context, index) => Card(
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text(resultsList[index].quentity!.toString()),
+          Text(
+            "stock".tr,
+            style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryColor),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextFormField(
+              decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.search),
+                  labelText: "search".tr,
+                  hintText: "search_hint".tr),
+              controller: _searchController,
+              autofocus: false,
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Expanded(
+            child: Obx(
+              () => Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12, width: 1)),
+                child: ListView.builder(
+                  itemCount: resultsList.length,
+                  itemBuilder: (context, index) => Card(
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Text(resultsList[index].quentity!.toString()),
+                      ),
+                      title: Text(resultsList[index].brand! +
+                          " (" +
+                          resultsList[index].id! +
+                          ")"),
+                      subtitle: Text(resultsList[index].name!),
+                      trailing:
+                          Text(resultsList[index].price!.toString() + "₺"),
                     ),
-                    title: Text(resultsList[index].brand! +
-                        " (" +
-                        resultsList[index].id! +
-                        ")"),
-                    subtitle: Text(resultsList[index].name!),
-                    trailing: Text(resultsList[index].price!.toString() + "₺"),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

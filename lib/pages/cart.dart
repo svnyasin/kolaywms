@@ -21,7 +21,7 @@ class _CartState extends State<Cart> {
     for (var i = 0; i < listController.itemsList.length; i++) {
       if (listController.itemsList[i].id == id) {
         if (!controller.cartList.contains(listController.itemsList[i])) {
-          var itemHolder = listController.itemsList[i];
+          var itemHolder = listController.itemsList[i].copyWith();
           itemHolder.quentity = 1;
           controller.cartList.add(itemHolder);
         } else {
@@ -38,172 +38,180 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "sale".tr,
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: "ID",
-                  suffixIcon: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          controller.scanBarcode().then((value) {
-                            addToCart(value!);
-                          });
-                        },
-                        icon: Icon(Icons.qr_code),
-                      ),
-                      IconButton(
-                        autofocus: false,
-                        onPressed: () {
-                          addToCart(barcodeController.text);
-                        },
-                        icon: Icon(Icons.send),
-                      ),
-                    ],
-                  ),
-                ),
-                controller: barcodeController,
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode currentScope = FocusScope.of(context);
+        if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        }
+      },
+      child: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
               ),
-            ),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                    height: Get.size.height - 400,
-                    child: Obx(
-                      () => Container(
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Colors.black12, width: 1)),
-                        child: ListView.builder(
-                          itemCount: controller.cartList.length,
-                          itemBuilder: (context, index) => Card(
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: Text(controller.cartList[index].quentity!
-                                    .toString()),
-                              ),
-                              title: Text(controller.cartList[index].brand! +
-                                  " (" +
-                                  controller.cartList[index].id! +
-                                  ")"),
-                              subtitle: Text(controller.cartList[index].name!),
-                              trailing: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        if (controller
-                                                .cartList[index].quentity >
-                                            0) {
-                                          controller.cartList[index].quentity--;
-                                        }
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.remove_circle,
-                                      color: Colors.red,
+              Text(
+                "sale".tr,
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "ID",
+                    suffixIcon: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            controller.scanBarcode().then((value) {
+                              addToCart(value!);
+                            });
+                          },
+                          icon: Icon(Icons.qr_code),
+                        ),
+                        IconButton(
+                          autofocus: false,
+                          onPressed: () {
+                            addToCart(barcodeController.text);
+                          },
+                          icon: Icon(Icons.send),
+                        ),
+                      ],
+                    ),
+                  ),
+                  controller: barcodeController,
+                ),
+              ),
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                      height: Get.size.height - 400,
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.black12, width: 1)),
+                          child: ListView.builder(
+                            itemCount: controller.cartList.length,
+                            itemBuilder: (context, index) => Card(
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Text(controller.cartList[index].quentity!
+                                      .toString()),
+                                ),
+                                title: Text(controller.cartList[index].brand! +
+                                    " (" +
+                                    controller.cartList[index].id! +
+                                    ")"),
+                                subtitle: Text(controller.cartList[index].name!),
+                                trailing: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          if (controller
+                                                  .cartList[index].quentity >
+                                              0) {
+                                            controller.cartList[index].quentity--;
+                                          }
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.remove_circle,
+                                        color: Colors.red,
+                                      ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    autofocus: false,
-                                    onPressed: () {
-                                      setState(() {
-                                        controller.cartList[index].quentity++;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.add_circle,
-                                      color: Colors.green,
+                                    IconButton(
+                                      autofocus: false,
+                                      onPressed: () {
+                                        setState(() {
+                                          controller.cartList[index].quentity++;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.add_circle,
+                                        color: Colors.green,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    )),
-              ),
-            ),
-            Container(
-              height: 60,
-              width: 310,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 40,
-                    width: 150,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(kPrimaryColor),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ))),
-                      onPressed: () async {
-                        setState(() {
-                          controller.cartList.clear();
-                        });
-                      },
-                      child: Text(
-                        "clear".tr,
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                  ),
-                  
-                ],
-              ),
-            ),
-            Container(
-              height: 60,
-              width: 310,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(kPrimaryColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ))),
-                onPressed: () async {
-                  controller.updateItems();
-                  controller.cartList.clear();
-                },
-                child: Text(
-                  "done".tr,
-                  style: TextStyle(fontSize: 15),
+                      )),
                 ),
               ),
-            ),
-          ],
+              Container(
+                height: 60,
+                width: 310,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 40,
+                      width: 150,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(kPrimaryColor),
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ))),
+                        onPressed: () async {
+                          setState(() {
+                            controller.cartList.clear();
+                          });
+                        },
+                        child: Text(
+                          "clear".tr,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ),
+                    ),
+                    
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                width: 310,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ))),
+                  onPressed: () async {
+                    controller.updateItems();
+                    controller.cartList.clear();
+                  },
+                  child: Text(
+                    "done".tr,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

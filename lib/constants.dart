@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color kPrimaryColor = Color(0xFFF42F0F);
-const Color kPrimaryLightColor = Color(0xFFFBC0B7);
+const Color kPrimaryColor = Color(0xFF6982FC);
+const Color kPrimaryLightColor = Color(0xFFE1E6FE);
 
 final theme = ThemeData(
   textTheme: GoogleFonts.nunitoTextTheme(),

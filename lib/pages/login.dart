@@ -30,7 +30,11 @@ class LoginPage extends GetWidget<AuthController> {
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
+                
                 decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
                   icon: Icon(
                     Icons.person,
                     color: kPrimaryColor,
@@ -46,7 +50,13 @@ class LoginPage extends GetWidget<AuthController> {
               children: [
                 TextFieldContainer(
                   child: TextFormField(
+                style: TextStyle(color: Colors.black54),
+
+                    
                     decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black54),
+
+                      
                       icon: Icon(
                         Icons.lock,
                         color: kPrimaryColor,
@@ -100,7 +110,7 @@ class LoginPage extends GetWidget<AuthController> {
               height: 10,
             ),
             AlreadyHaveAnAccount(
-                login: true, press: () => Get.to(SignUpPage())),
+                login: true, press: () => Get.offAll(SignUpPage())),
           ],
         ),
       )),

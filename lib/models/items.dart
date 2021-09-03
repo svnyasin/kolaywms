@@ -16,4 +16,18 @@ class Item {
     price = data["price"];
     quentity = data["quentity"];
   }
+
+  Item copyWith({ String? id,
+  String? brand,
+  String? name,
+  double? price,
+  int? quentity, }) {
+    return Item(
+      id: id ?? this.id,
+      brand: brand ?? this.brand,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      quentity: quentity ?? this.quentity,
+    );
+  }
 }
