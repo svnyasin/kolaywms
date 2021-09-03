@@ -11,7 +11,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  var isTurkish = prefs.getBool('isTurkish') ?? false;
+  var isTurkish = prefs.getBool('isTurkish') ?? Get.deviceLocale.toString() == "tr_TR" ? true : false ;
 
   runApp(MyApp(isTurkish,prefs));
 }
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
           'US'), // specify the fallback locale in case an invalid locale is selected.
 
       theme: theme,
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       initialBinding: Binding(),
       home: Root(),
