@@ -1,4 +1,4 @@
-package com.example.kolay_wms_mobile
+package com.yasinseven.kolaywms
 
 import io.flutter.embedding.android.FlutterActivity
 

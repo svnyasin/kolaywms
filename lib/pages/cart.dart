@@ -102,56 +102,66 @@ class _CartState extends State<Cart> {
                           decoration: BoxDecoration(
                               border:
                                   Border.all(color: Colors.black12, width: 1)),
-                          child: ListView.builder(
-                            itemCount: controller.cartList.length,
-                            itemBuilder: (context, index) => Card(
-                              child: ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  child: Text(controller.cartList[index].quentity!
-                                      .toString()),
-                                ),
-                                title: Text(controller.cartList[index].brand! +
-                                    " (" +
-                                    controller.cartList[index].id! +
-                                    ")"),
-                                subtitle: Text(controller.cartList[index].name!),
-                                trailing: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          if (controller
-                                                  .cartList[index].quentity >
-                                              0) {
-                                            controller.cartList[index].quentity--;
-                                          }
-                                        });
-                                      },
-                                      icon: Icon(
-                                        Icons.remove_circle,
-                                        color: Colors.red,
+                          child: controller.cartList.isEmpty
+                              ? Center(
+                                  child: Text("cart_empty".tr),
+                                )
+                              : ListView.builder(
+                                  itemCount: controller.cartList.length,
+                                  itemBuilder: (context, index) => Card(
+                                    child: ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        child: Text(controller
+                                            .cartList[index].quentity!
+                                            .toString()),
+                                      ),
+                                      title: Text(
+                                          controller.cartList[index].brand! +
+                                              " (" +
+                                              controller.cartList[index].id! +
+                                              ")"),
+                                      subtitle: Text(
+                                          controller.cartList[index].name!),
+                                      trailing: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                if (controller.cartList[index]
+                                                        .quentity >
+                                                    0) {
+                                                  controller.cartList[index]
+                                                      .quentity--;
+                                                }
+                                              });
+                                            },
+                                            icon: Icon(
+                                              Icons.remove_circle,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            autofocus: false,
+                                            onPressed: () {
+                                              setState(() {
+                                                controller
+                                                    .cartList[index].quentity++;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              Icons.add_circle,
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    IconButton(
-                                      autofocus: false,
-                                      onPressed: () {
-                                        setState(() {
-                                          controller.cartList[index].quentity++;
-                                        });
-                                      },
-                                      icon: Icon(
-                                        Icons.add_circle,
-                                        color: Colors.green,
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ),
                       )),
                 ),
@@ -170,9 +180,8 @@ class _CartState extends State<Cart> {
                         style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(kPrimaryColor),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ))),
                         onPressed: () async {
@@ -186,7 +195,6 @@ class _CartState extends State<Cart> {
                         ),
                       ),
                     ),
-                    
                   ],
                 ),
               ),

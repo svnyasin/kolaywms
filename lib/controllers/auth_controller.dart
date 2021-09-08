@@ -13,6 +13,7 @@ class AuthController extends GetxController {
   User? get user => _firebaseUser.value;
 
   @override
+  // ignore: must_call_super
   onInit() async {
     _firebaseUser.bindStream(_auth.authStateChanges());
     launch.value = await checkFirstSeen();
@@ -31,16 +32,22 @@ class AuthController extends GetxController {
 
   void createUser(String email, String password) async {
     try {
+      // ignore: unused_local_variable
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
 
       await _auth.signOut();
 
       Get.offAll(Root());
+      Get.snackbar(
+        "success".tr,
+        "sign_up_success".tr,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } catch (e) {
       Get.snackbar(
-        "Error",
-        e.toString(),
+        "error".tr,
+        "sign_up_error".tr,
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -65,8 +72,8 @@ class AuthController extends GetxController {
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } catch (e) {
       Get.snackbar(
-        "Error",
-        e.toString(),
+        "error".tr,
+        "google_error".tr,
         snackPosition: SnackPosition.BOTTOM,
       );
       return null;
@@ -83,22 +90,22 @@ class AuthController extends GetxController {
       );
     } catch (e) {
       Get.snackbar(
-        "Error",
-        e.toString(),
+        "error".tr,
+        "google_error".tr,
         snackPosition: SnackPosition.BOTTOM,
       );
     }
-    
   }
 
   void login(String email, String password) async {
     try {
+      // ignore: unused_local_variable
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
     } catch (e) {
       Get.snackbar(
-        "Error",
-        e.toString(),
+        "error".tr,
+        "login_error".tr,
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -109,7 +116,7 @@ class AuthController extends GetxController {
       await _auth.signOut();
     } catch (e) {
       Get.snackbar(
-        "Error signing out",
+        "error".tr,
         e.toString(),
         snackPosition: SnackPosition.BOTTOM,
       );

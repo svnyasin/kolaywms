@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kolay_wms_mobile/constants.dart';
 import 'package:kolay_wms_mobile/controllers/auth_controller.dart';
-import 'package:kolay_wms_mobile/pages/login.dart';
 import 'package:kolay_wms_mobile/utils/root.dart';
 import 'package:kolay_wms_mobile/widgets/already_have_an_account.dart';
 import 'package:kolay_wms_mobile/widgets/text_field_container.dart';
@@ -17,6 +16,7 @@ class SignUpPage extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: Text("sign_up".tr),
       ),
       body: Center(
@@ -25,17 +25,15 @@ class SignUpPage extends GetWidget<AuthController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              "assets/images/maintenance.png",
+              "assets/images/sign_up.png",
               height: Get.size.height * 0.25,
             ),
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 style: TextStyle(color: Colors.black54),
-
                 decoration: InputDecoration(
                   hintStyle: TextStyle(color: Colors.black54),
-
                   icon: Icon(
                     Icons.person,
                     color: kPrimaryColor,
@@ -50,10 +48,8 @@ class SignUpPage extends GetWidget<AuthController> {
             TextFieldContainer(
               child: TextFormField(
                 style: TextStyle(color: Colors.black54),
-
                 decoration: InputDecoration(
                   hintStyle: TextStyle(color: Colors.black54),
-
                   icon: Icon(
                     Icons.lock,
                     color: kPrimaryColor,
@@ -69,11 +65,8 @@ class SignUpPage extends GetWidget<AuthController> {
             TextFieldContainer(
               child: TextFormField(
                 style: TextStyle(color: Colors.black54),
-
                 decoration: InputDecoration(
                   hintStyle: TextStyle(color: Colors.black54),
-
-                  
                   icon: Icon(
                     Icons.lock,
                     color: kPrimaryColor,
@@ -113,8 +106,7 @@ class SignUpPage extends GetWidget<AuthController> {
               ),
             ),
             SizedBox(height: Get.size.height * 0.02),
-            AlreadyHaveAnAccount(
-                login: false, press: () => Get.offAll(Root())),
+            AlreadyHaveAnAccount(login: false, press: () => Get.offAll(Root())),
           ],
         ),
       )),

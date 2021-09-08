@@ -9,6 +9,7 @@ import 'package:kolay_wms_mobile/pages/cart.dart';
 import 'package:kolay_wms_mobile/pages/stock_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class HomePage extends GetWidget<NavBarController> {
   AuthController authController = AuthController();
 
@@ -58,10 +59,10 @@ class HomePage extends GetWidget<NavBarController> {
               trailing: Icon(Icons.arrow_right),
               title: Text("change_language".tr),
               onTap: () async {
-                
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var isTurkish = prefs.getBool('isTurkish') ?? false;
-                Get.updateLocale(isTurkish ? Locale("en","US") : Locale('tr', 'TR'));
+                Get.updateLocale(
+                    isTurkish ? Locale("en", "US") : Locale('tr', 'TR'));
                 await prefs.setBool('isTurkish', isTurkish ? false : true);
               },
             ),
@@ -72,11 +73,12 @@ class HomePage extends GetWidget<NavBarController> {
               onTap: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 var isDark = prefs.getBool('isDark') ?? false;
-    print(isDark.toString()+"xxxx");
+                print(isDark.toString() + "xxxx");
 
                 await prefs.setBool('isDark', isDark ? false : true);
-                print("object + "+ prefs.getBool('isDark').toString());
-                Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
+                print("object + " + prefs.getBool('isDark').toString());
+                Get.changeTheme(
+                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
               },
             ),
             ListTile(
@@ -91,6 +93,7 @@ class HomePage extends GetWidget<NavBarController> {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: const Text('KolayWMS'),
         centerTitle: true,
       ),

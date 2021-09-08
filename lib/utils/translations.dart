@@ -40,21 +40,27 @@ class Messages extends Translations {
           "add": "Add",
           "search": "Search",
           "search_hint": "Enter Brand or ID",
-          "clear":"Clear",
-          "done":"Done",
-          "add_items":"Add Items",
-          "brand":"Brand",
-          "name":"Name",
-          "price":"Price",
-          "quentity":"Quentity",
-          "add_null_error":"Fields cannot be left blank.",
-          "change_language":"Change language",
-          "dark_mode":"Dark Mode",
-          "success":"Success",
-          "forgot_password_success":"Forgot password link successfully sent to your mail.",
-
-          
-
+          "clear": "Clear",
+          "done": "Done",
+          "add_items": "Add Items",
+          "brand": "Brand",
+          "name": "Name",
+          "price": "Price",
+          "quentity": "Quentity",
+          "add_null_error": "Fields cannot be left blank.",
+          "change_language": "Change language",
+          "dark_mode": "Dark Mode",
+          "success": "Success",
+          "forgot_password_success":
+              "Forgot password link successfully sent to your mail.",
+          "sign_up_success": "Your account has been successfully created.",
+          "sign_up_error":
+              "Error creating account, please check your information and try again.",
+          "login_error": "Your email or password is incorrect.",
+          "google_error":
+              "Unexpected error, please check your information and try again.",
+          "stock_empty": "It looks like you don't have any items in stock yet.",
+          "cart_empty": "Cart is empty."
         },
         "tr_TR": {
           "intro1_title": "KolayWMS'e hoşgeldin!",
@@ -92,21 +98,27 @@ class Messages extends Translations {
           "add": "Ekle",
           "search": "Arama",
           "search_hint": "Marka veya ID giriniz",
-          "clear":"Temizle",
-          "done":"Tamamla",
-          "add_items":"Ürün Ekle",
-          "brand":"Marka",
-          "name":"İsim",
-          "price":"Fiyat",
-          "quentity":"Adet",
-          "add_null_error":"Alanlar boş bırakılamaz.",
-          "change_language":"Dili değiştir",
-          "dark_mode":"Koyu Tema",
-          "success":"Başarılı",
-          "forgot_password_success":"Parola sıfırlama linki başarıyla gönderildi.",
-
-
-
+          "clear": "Temizle",
+          "done": "Tamamla",
+          "add_items": "Ürün Ekle",
+          "brand": "Marka",
+          "name": "İsim",
+          "price": "Fiyat",
+          "quentity": "Adet",
+          "add_null_error": "Alanlar boş bırakılamaz.",
+          "change_language": "Dili değiştir",
+          "dark_mode": "Koyu Tema",
+          "success": "Başarılı",
+          "forgot_password_success":
+              "Parola sıfırlama linki başarıyla gönderildi.",
+          "sign_up_success": "Hesabınız başarıyla oluşturuldu.",
+          "sign_up_error":
+              "Hesap oluşturulurken hata oluştu, lütfen bilgilerinizi kontrol edip tekrar deneyin.",
+          "login_error": "Eposta veya parolanız hatalı.",
+          "google_error":
+              "Beklenmeyen hata, lütfen bilgilerinizi kontrol edip tekrar deneyin.",
+          "stock_empty": "Görünüşe göre stoğunuzda henüz ürün yok.",
+          "cart_empty": "Sepet boş."
         }
       };
 }

@@ -50,7 +50,8 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/logo/mipmap-xxxhdpi/ic_launcher.png"
+  image_path: "assets/logo/ic_launcher.png"
+  # flutter pub run flutter_launcher_icons:main
 
 
 
@@ -69,6 +70,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/logo/
+
 
   #   - images/a_dot_ham.jpeg
 
@@ -119,7 +122,7 @@ flutter_native_splash:
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a 
   # png file and should be sized for 4x pixel density.
-  image: assets/logo/web_hi_res_512.png
+  image: assets/logo/logo.png
 
   # The color_dark, background_image_dark, and image_dark are parameters that set the background
   # and image when the device is in dark mode. If they are not specified, the app will use the

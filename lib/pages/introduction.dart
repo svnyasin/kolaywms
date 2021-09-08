@@ -11,8 +11,7 @@ class IntroductionPage extends GetWidget<AuthController> {
   final List<PageViewModel> listPagesViewModel = [
     PageViewModel(
       title: "intro1_title".tr,
-      body:
-          "intro1_body".tr,
+      body: "intro1_body".tr,
       image: Image.asset("assets/images/welcome.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
@@ -21,9 +20,8 @@ class IntroductionPage extends GetWidget<AuthController> {
     ),
     PageViewModel(
       title: "intro2_title".tr,
-      body:
-          "intro2_body".tr,
-      image: Image.asset("assets/images/business_failure.png", height: 300.0),
+      body: "intro2_body".tr,
+      image: Image.asset("assets/images/failure.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
         bodyFlex: 2,
@@ -31,21 +29,17 @@ class IntroductionPage extends GetWidget<AuthController> {
     ),
     PageViewModel(
       title: "intro3_title".tr,
-      body:
-                    "intro3_body".tr,
-
-      image: Image.asset("assets/images/maintenance.png", height: 300.0),
+      body: "intro3_body".tr,
+      image: Image.asset("assets/images/ways.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
         bodyFlex: 2,
       ),
     ),
     PageViewModel(
-            title: "intro4_title".tr,
-
-      body:
-          "intro4_body".tr,
-      image: Image.asset("assets/images/business_plan.png", height: 300.0),
+      title: "intro4_title".tr,
+      body: "intro4_body".tr,
+      image: Image.asset("assets/images/management.png", height: 300.0),
       decoration: PageDecoration(
         imageFlex: 3,
         bodyFlex: 2,
@@ -56,6 +50,10 @@ class IntroductionPage extends GetWidget<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        shadowColor: Colors.transparent,
+      ),
       body: IntroductionScreen(
         pages: listPagesViewModel,
         onDone: () {

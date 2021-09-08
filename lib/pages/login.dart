@@ -16,6 +16,7 @@ class LoginPage extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: Text("log_in".tr),
       ),
       body: Center(
@@ -24,15 +25,13 @@ class LoginPage extends GetWidget<AuthController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              "assets/images/welcome.png",
+              "assets/images/login.png",
               height: Get.size.height * 0.25,
             ),
             SizedBox(height: Get.size.height * 0.02),
             TextFieldContainer(
               child: TextFormField(
                 style: TextStyle(color: Colors.black54),
-
-                
                 decoration: InputDecoration(
                   hintStyle: TextStyle(color: Colors.black54),
                   icon: Icon(
@@ -50,13 +49,9 @@ class LoginPage extends GetWidget<AuthController> {
               children: [
                 TextFieldContainer(
                   child: TextFormField(
-                style: TextStyle(color: Colors.black54),
-
-                    
+                    style: TextStyle(color: Colors.black54),
                     decoration: InputDecoration(
-                  hintStyle: TextStyle(color: Colors.black54),
-
-                      
+                      hintStyle: TextStyle(color: Colors.black54),
                       icon: Icon(
                         Icons.lock,
                         color: kPrimaryColor,
