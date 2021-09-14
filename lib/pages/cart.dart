@@ -128,8 +128,38 @@ class _CartState extends State<Cart> {
                                             MainAxisAlignment.end,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          IconButton(
-                                            onPressed: () {
+                                          GestureDetector(
+                                            onDoubleTap: () {
+                                              setState(() {
+                                                controller.cartList[index]
+                                                    .quentity = controller
+                                                        .cartList[index]
+                                                        .quentity -
+                                                    100;
+                                                if (controller.cartList[index]
+                                                        .quentity <
+                                                    0) {
+                                                  controller.cartList[index]
+                                                      .quentity = 0;
+                                                }
+                                              });
+                                            },
+                                            onLongPress: () {
+                                              setState(() {
+                                                controller.cartList[index]
+                                                    .quentity = controller
+                                                        .cartList[index]
+                                                        .quentity -
+                                                    10;
+                                                if (controller.cartList[index]
+                                                        .quentity <
+                                                    0) {
+                                                  controller.cartList[index]
+                                                      .quentity = 0;
+                                                }
+                                              });
+                                            },
+                                            onTap: () {
                                               setState(() {
                                                 if (controller.cartList[index]
                                                         .quentity >
@@ -139,20 +169,40 @@ class _CartState extends State<Cart> {
                                                 }
                                               });
                                             },
-                                            icon: Icon(
+                                            child: Icon(
                                               Icons.remove_circle,
                                               color: Colors.red,
                                             ),
                                           ),
-                                          IconButton(
-                                            autofocus: false,
-                                            onPressed: () {
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          GestureDetector(
+                                            onDoubleTap: () {
+                                              setState(() {
+                                                controller.cartList[index]
+                                                    .quentity = controller
+                                                        .cartList[index]
+                                                        .quentity +
+                                                    100;
+                                              });
+                                            },
+                                            onLongPress: () {
+                                              setState(() {
+                                                controller.cartList[index]
+                                                    .quentity = controller
+                                                        .cartList[index]
+                                                        .quentity +
+                                                    10;
+                                              });
+                                            },
+                                            onTap: () {
                                               setState(() {
                                                 controller
                                                     .cartList[index].quentity++;
                                               });
                                             },
-                                            icon: Icon(
+                                            child: Icon(
                                               Icons.add_circle,
                                               color: Colors.green,
                                             ),

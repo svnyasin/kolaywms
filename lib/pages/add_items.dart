@@ -151,6 +151,11 @@ class AddItems extends GetWidget<AddItemsController> {
                                 double.parse(priceController.text),
                                 int.parse(quentityController.text));
                           }
+                          idController.text = "";
+                          brandController.text = "";
+                          nameController.text = "";
+                          priceController.text = "";
+                          quentityController.text = "";
                         } catch (e) {
                           Get.showSnackbar(
                             GetBar(

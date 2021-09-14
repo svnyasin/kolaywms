@@ -116,8 +116,8 @@ class _StockInfoState extends State<StockInfo> {
                                   resultsList[index].id! +
                                   ")"),
                               subtitle: Text(resultsList[index].name!),
-                              trailing: Text(
-                                  resultsList[index].price!.toString() + "₺"),
+                              trailing:
+                                  Text(resultsList[index].price!.toString()),
                             ),
                           ),
                         )),

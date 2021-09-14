@@ -56,34 +56,72 @@ class HomePage extends GetWidget<NavBarController> {
             ),
             ListTile(
               leading: Icon(Icons.language),
-              trailing: Icon(Icons.arrow_right),
-              title: Text("change_language".tr),
-              onTap: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var isTurkish = prefs.getBool('isTurkish') ?? false;
-                Get.updateLocale(
-                    isTurkish ? Locale("en", "US") : Locale('tr', 'TR'));
-                await prefs.setBool('isTurkish', isTurkish ? false : true);
-              },
+              trailing: DropdownButton<String>(
+                icon: const Icon(Icons.arrow_drop_down),
+                iconSize: 24,
+                underline: Container(
+                  color: Colors.transparent,
+                ),
+                onChanged: (String? newValue) async {
+                  if (newValue == "Turkish") {
+                    Get.updateLocale(Locale('tr', 'TR'));
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    await prefs.setBool('isTurkish', true);
+                  }
+                  if (newValue == "English") {
+                    Get.updateLocale(Locale('en', 'US'));
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    await prefs.setBool('isTurkish', false);
+                  } else {}
+                },
+                items: <String>['English', 'Turkish']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              title: Text("language".tr),
             ),
             ListTile(
               leading: Icon(Icons.dark_mode),
-              trailing: Icon(Icons.arrow_right),
-              title: Text("dark_mode".tr),
-              onTap: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                var isDark = prefs.getBool('isDark') ?? false;
-                print(isDark.toString() + "xxxx");
+              trailing: DropdownButton<String>(
+                icon: const Icon(Icons.arrow_drop_down),
+                iconSize: 24,
+                underline: Container(
+                  color: Colors.transparent,
+                ),
+                onChanged: (String? newValue) async {
+                  if (newValue == 'light'.tr) {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
 
-                await prefs.setBool('isDark', isDark ? false : true);
-                print("object + " + prefs.getBool('isDark').toString());
-                Get.changeTheme(
-                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-              },
+                    await prefs.setBool('isDark', false);
+                    Get.changeTheme(ThemeData.light());
+                  }
+                  if (newValue == 'dark'.tr) {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+
+                    await prefs.setBool('isDark', true);
+                    Get.changeTheme(ThemeData.dark());
+                  } else {}
+                },
+                items: <String>['light'.tr, 'dark'.tr]
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              title: Text("theme".tr),
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              trailing: Icon(Icons.arrow_right),
               title: Text("sign_out".tr),
               onTap: () {
                 authController.signOut();
