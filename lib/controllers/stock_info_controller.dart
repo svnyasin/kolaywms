@@ -18,4 +18,13 @@ class StockInfoController extends GetxController {
       .collection(_auth.currentUser!.uid)
       .snapshots()
       .map((query) => query.docs.map((item) => Item.fromMap(item)).toList());
+
+  Future<void> deleteItem(String id) {
+    return _firestore
+        .collection(_auth.currentUser!.uid)
+        .doc(id)
+        .delete()
+        .then((value) => print("Deleted"))
+        .catchError((error) => print("Failed to delete user: $error"));
+  }
 }

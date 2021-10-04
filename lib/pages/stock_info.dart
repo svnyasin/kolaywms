@@ -106,6 +106,18 @@ class _StockInfoState extends State<StockInfo> {
                           itemCount: resultsList.length,
                           itemBuilder: (context, index) => Card(
                             child: ListTile(
+                              onLongPress: () {
+                                Get.defaultDialog(
+                                    onConfirm: () {
+                                      controller
+                                          .deleteItem(resultsList[index].id!);
+                                      Get.back();
+                                    },
+                                    title: "Öğe Silinecek",
+                                    textConfirm: "Yes",
+                                    textCancel: "No",
+                                    content: Text("Onaylıyor musunuz?"));
+                              },
                               leading: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 child: Text(

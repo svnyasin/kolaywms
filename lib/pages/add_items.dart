@@ -75,6 +75,7 @@ class AddItems extends GetWidget<AddItemsController> {
                     height: 14,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: "price".tr,
                     ),
@@ -84,6 +85,7 @@ class AddItems extends GetWidget<AddItemsController> {
                     height: 14,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: "quentity".tr,
                     ),
