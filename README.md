@@ -5,6 +5,15 @@ KolayWMS stok, envanter veya deponuzdaki öğeleri yönetebilmeniz için gelişt
 Play Store : https://play.google.com/store/apps/details?id=com.yasinseven.kolaywms&gl=TR
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+
 
 ## Getting Started
 
