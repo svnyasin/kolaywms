@@ -1,6 +1,10 @@
 # kolay_wms_mobile
 
-A new Flutter project.
+KolayWMS stok, envanter veya deponuzdaki öğeleri yönetebilmeniz için geliştirilmiş basit bir yönetim sistemidir. Ürünlerinizi, eşyalarınızı veya herhangi bir koleksiyondaki öğeleri uygulamaya ekleyerek yönetebilirsiniz.
+
+Play Store : https://play.google.com/store/apps/details?id=com.yasinseven.kolaywms&gl=TR
+
+
 
 ## Getting Started
 
