@@ -1,4 +1,4 @@
-# kolay_wms_mobile
+# kolay_wms
 
 KolayWMS stok, envanter veya deponuzdaki öğeleri yönetebilmeniz için geliştirilmiş basit bir yönetim sistemidir. Ürünlerinizi, eşyalarınızı veya herhangi bir koleksiyondaki öğeleri uygulamaya ekleyerek yönetebilirsiniz.
 
